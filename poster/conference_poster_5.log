@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.29)  3 DEC 2015 07:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.29)  3 DEC 2015 07:39
 entering extended mode
 **conference_poster_5.tex
 (C:\Users\Estienne\Documents\CS281\aml-project\poster\conference_poster_5.tex
@@ -319,28 +319,31 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <74.3> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 55.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <51.6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 57.
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--59
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 58.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 55--60
 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 74.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 75.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <35.83> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 86.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 93.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 94.
 
-Underfull \hbox (badness 8075) in paragraph at lines 93--94
+Underfull \hbox (badness 8075) in paragraph at lines 94--95
 \OT1/ptm/m/n/24.88 for com-par-i-son. His-tor-i-cally though, re-cidi-vism pre-
 dic-tion
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 101.
+LaTeX Font Info:    Try loading font information for U+msa on input line 102.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 101.
+LaTeX Font Info:    Try loading font information for U+msb on input line 102.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -349,92 +352,92 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: figures/neural_network.png Graphic file (type png)
 
 <use figures/neural_network.png>
-Package pdftex.def Info: figures/neural_network.png used on input line 107.
+Package pdftex.def Info: figures/neural_network.png used on input line 108.
 (pdftex.def)             Requested size: 559.24794pt x 325.8163pt.
 
-Overfull \hbox (44.89893pt too wide) in paragraph at lines 114--122
+Overfull \hbox (44.89893pt too wide) in paragraph at lines 115--123
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 [][]\OT1/ptm/m/n/24.88 After split-ting the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \OT1/ptm/m/n/24.88 1978 dataset and the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \OT1/ptm/m/n/24.88 1980 dataset into
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \OT1/ptm/m/n/24.88 train-ing and val-i-da-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \OT1/ptm/m/n/24.88 tion sets (7:3 ra-tio)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \OT1/ptm/m/n/24.88 and train-ing the neu-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \OT1/ptm/m/n/24.88 ral net-work, val-i-da-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \OT1/ptm/m/n/24.88 tion set per-for-mance
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \OT1/ptm/m/n/24.88 is im-proved com-pared to the re-sults from Paloc-say et al
  []
 
 <figures/1978.png, id=3, 706.64pt x 494.84875pt>
 File: figures/1978.png Graphic file (type png)
  <use figures/1978.png>
-Package pdftex.def Info: figures/1978.png used on input line 128.
+Package pdftex.def Info: figures/1978.png used on input line 129.
 (pdftex.def)             Requested size: 629.14726pt x 440.58768pt.
 
 <figures/number_forest78.png, id=4, 390.45876pt x 266.9975pt>
 File: figures/number_forest78.png Graphic file (type png)
 
 <use figures/number_forest78.png>
-Package pdftex.def Info: figures/number_forest78.png used on input line 142.
+Package pdftex.def Info: figures/number_forest78.png used on input line 143.
 (pdftex.def)             Requested size: 314.57362pt x 215.11789pt.
 
 <figures/number_features78.png, id=5, 374.39874pt x 266.9975pt>
 File: figures/number_features78.png Graphic file (type png)
 
 <use figures/number_features78.png>
-Package pdftex.def Info: figures/number_features78.png used on input line 143.
+Package pdftex.def Info: figures/number_features78.png used on input line 144.
 (pdftex.def)             Requested size: 314.57362pt x 224.34561pt.
 
 <figures/features_weights.png, id=6, 343.2825pt x 182.18062pt>
 File: figures/features_weights.png Graphic file (type png)
 
 <use figures/features_weights.png>
-Package pdftex.def Info: figures/features_weights.png used on input line 171.
+Package pdftex.def Info: figures/features_weights.png used on input line 172.
 (pdftex.def)             Requested size: 699.05727pt x 371.0236pt.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 185.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 186.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <24.88> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 185.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 186.
 
 (C:\Users\Estienne\Documents\CS281\aml-project\poster\conference_poster_5.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 13--17
@@ -459,22 +462,23 @@ res/features_weights.png>]
 (C:\Users\Estienne\Documents\CS281\aml-project\poster\conference_poster_5.aux) 
 ) 
 Here is how much of TeX's memory you used:
- 4192 strings out of 493921
- 61910 string characters out of 3147273
+ 4227 strings out of 493921
+ 62408 string characters out of 3147273
  165258 words of memory out of 3000000
- 7433 multiletter control sequences out of 15000+200000
- 27596 words of font info for 61 fonts, out of 3000000 for 9000
+ 7463 multiletter control sequences out of 15000+200000
+ 28111 words of font info for 63 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,7n,38p,788b,433s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
-rw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_poster_5.pdf (1 page, 196136 bytes).
+rw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on conference_poster_5.pdf (1 page, 203998 bytes).
 PDF statistics:
- 41 PDF objects out of 1000 (max. 8388607)
+ 45 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

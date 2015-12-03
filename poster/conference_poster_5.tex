@@ -99,9 +99,18 @@ Recidivism of criminal offenders is a difficult topic in criminal justice. If we
 
 <opening>
 
+
+\section*{Neural network}
 Neural networks were discovered some time ago, but lately, they have been experiencing a resurgence in usage. There is likely significant complexity in the interactions between the different variables, so simple models like logistic regression are not going to be as capable of modeling them compared to neural networks. Prior work on this data set has considered the use of neural networks and found them to have good predictive power for recidivism compared to traditional modeling techniques like logistic regression models. We seek to harness the improvements in neural networks that have been made over the last few years in an attempt to improve predictive accuracy. We find that we can achieve a small, but notable improvement in accuracy on unseen data.
 
 
+
+As this is a plain binary classifications problem, we use a multi-layer perceptron feedforward neural network with a single hidden layer, bias terms, and the logistic function as the activation function ($f$) for both the hidden and output layers. There is a single output neuron ($\hat{y} \in (0, 1)$) used for classification with a $0.5$ threshold. For some input vector $x$, linear weights $W$, and bias terms $b$:
+
+\[ \hat{y} = f( W_2  f( W_1 x + b_1 ) + b_2 ) \]
+\[ E = - y \ln( \hat{y} ) - (1 - y) \ln ( 1 - \hat{y} ) \]
+
+Using cross-entropy error ($E$) to assess our predictions, we can apply backpropagation and optimize the weights and bias terms by stochastic gradient descent using $\frac{\partial E}{\partial W}$, and $\frac{\partial E}{\partial b}$.
 %----------------------------------------------------------------------------------------
 %	OBJECTIVES
 %----------------------------------------------------------------------------------------

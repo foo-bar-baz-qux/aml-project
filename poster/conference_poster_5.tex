@@ -36,6 +36,9 @@
 \usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
 \usepackage{wrapfig} % Allows wrapping text around tables and figures
 
+\usepackage{caption}
+\usepackage{subcaption}
+
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -49,7 +52,7 @@
 % The widths of these boxes can be easily edited to accommodate your content as you see fit
 
 \begin{minipage}[b]{0.55\linewidth}
-\veryHuge \color{NavyBlue} \textbf{Recidivism of criminal offenders} \color{Black}\\ % Title
+\veryHuge \color{NavyBlue} \textbf{Recidivism of Criminal Offenders} \color{Black}\\ % Title
 \Huge\textit{A machine-learning approach to justice}\\[1cm] % Subtitle
 \huge \textbf{Estienne Granet \& Victor Lei}\\ % Author(s)
 \huge Harvard University\\ % University/organization
@@ -70,12 +73,7 @@
 
 \begin{abstract}
 
-Recidivism of criminal offenders is a difficult topic in criminal justice. If we view the justice system as serving an important rehabilitatory purpose, then recidivism represents indicators for potential improvement in the correctional system. Using a public data-set on recidivism, we build off of prior work that used both traditional techniques, and machine learning techniques to find the probability of a criminal offender re-offending in the near future given his or her background, as well as the amount of time served. From this probability, we derive the optimal sentence given an individual. Our approach employs two classification methods in an attempt to improve accuracy:
-
-\begin{itemize}
-\item Random Forests
-\item Neural Networks
-\end{itemize}
+Recidivism of criminal offenders is a difficult topic in criminal justice. If we view the justice system as serving an important rehabilitatory purpose, then recidivism represents indicators for potential improvement in the correctional system. Using a public data-set on two cohorts of inmates released from North Carolina prisons in 1978 and 1980, we build two predictors of whether an individual will offend again in the future. Our first predictor is one-layer feed-forward neural networks. The second predictor is random forest. Results are presented below.
 
 \end{abstract}
 
@@ -86,19 +84,18 @@ Recidivism of criminal offenders is a difficult topic in criminal justice. If we
 \color{SaddleBrown} % SaddleBrown color for the introduction
 
 \section*{Introduction}
-Our goal is to develop a model that accounts for the offender's background and both predicts the probability of recidivism, and computes the optimal sentence. We define the optimal sentence as the sentence that minimizes the probability of recidivism given a set of constraints like making sure life imprisonment does not become the default answer. In particular, we would like to:
-\begin{enumerate}
-\item derive a predictor$ P$ for the probability of recidivism. The predictor would be a function that takes an individual's background, the nature of their offense and the sentence as inputs, and returns the probability of recidivism as an output; and
-\item find the optimal sentence for a given individual with a set of constraints.
-$$ \text{argmin}_{\text{sentence}} P(\text{sentence}, \text{others}) $$
-under constraints $\text{sentence} \leq \text{threshold}(k)$ where $k$ is the offense committed 
-\end{enumerate}
 
-We are using an ICPSR dataset which consists of the profiles of 9,327 prisoners released in 1978 and the profiles of 9,549 prisoners released in 1980. Each entry has 19 variables such as gender, age, sentence, and whether recidivism occurred within the follow-up period (around 4 years.)
+Our goal is to effectively forecast whether an offender will offender again in the future when he or she is released from prison. To achieve this goal, we rely on a survey conducted on prisoners released from North Carolina prisons in 1978 and 1980. The survey contains questions on the background of the offenders, including their involvement in drugs or alcohol, level of schooling, nature of the crime resulting in the sample conviction, number of prior incarcerations and recidivism following release from the sample
+incarceration. The data collection also contains information on the
+the marital status, the sex, the age and the race of the offenders. In hard numbers, the dataset contains 9,327 profiles for prisoners released in 1978 and 9,549 profiles for prisoners released in 1980. Each entry has 16 variables and most variables are indicators.
+
+\paragraph{}
+Past work on the topic include an article on recidivism prediction \cite{bib1}. In the article, Palocsay et al. fit a one-layer neural network model on the data set, thus providing us with a reference for comparison. Historically though, recidivism prediction has been based on explicative models borrowed from survival analysis such as \cite{bib2} or \cite{bib3}.
+
 
 \color{DarkSlateGray} % DarkSlateGray color for the rest of the content
 
-\section*{Neural network}
+\section*{Neural Network}
 Neural networks were discovered some time ago, but lately, they have been experiencing a resurgence in usage. There is likely significant complexity in the interactions between the different variables, so simple models like logistic regression are not going to be as capable of modeling them compared to neural networks. Prior work on this data set has considered the use of neural networks and found them to have good predictive power for recidivism compared to traditional modeling techniques like logistic regression models. We seek to harness the improvements in neural networks that have been made over the last few years in an attempt to improve predictive accuracy. We find that we can achieve a small, but notable improvement in accuracy on unseen data.
 
 As this is a plain binary classifications problem, we use a multi-layer perceptron feedforward neural network with a single hidden layer, bias terms, and the logistic function as the activation function ($f$) for both the hidden and output layers. There is a single output neuron ($\hat{y} \in (0, 1)$) used for classification with a $0.5$ threshold. For some input vector $x$, linear weights $W$, and bias terms $b$:
@@ -122,10 +119,10 @@ Using cross-entropy error ($E$), we can apply backpropagation and optimize the w
 1980 & 66.98\% (26) & 68.22\% (5) \\
 \bottomrule
 \end{tabular}
-\captionof{table}{\color{Green} Validation set performance}
+\captionof{table}{\color{Green} Validation set performance for NN predictor}
 \end{wraptable}
 
-After splitting the 1978 dataset and the 1980 dataset into training and validation sets (7:3 ratio) and training the neural network, validation set performance is improved compared to the results from Palocsay et al. The results are also achieved with far fewer nodes in the hidden layer, making it faster to train and likely more generalizable. As the figures below reveal, the neural network starts to quickly overfit as the number of nodes in the hidden layer increases.
+After splitting the 1978 dataset and the 1980 dataset into training and validation sets (7:3 ratio) and training the neural network, validation set performance is improved compared to the results from Palocsay et al \cite{bib1}. The results are also achieved with far fewer nodes in the hidden layer, making it faster to train and likely more generalizable. As the figures below reveal, the neural network starts to quickly overfit as the number of nodes in the hidden layer increases.
 
 \begin{center}\vspace{1cm}
 \includegraphics[width=0.9\linewidth]{1978}
@@ -139,31 +136,42 @@ After splitting the 1978 dataset and the 1980 dataset into training and validati
 
 \section*{Random Forest}
 
-
-Phasellus imperdiet, tortor vitae congue bibendum, felis enim sagittis lorem, et volutpat ante orci sagittis mi. Morbi rutrum laoreet semper. Morbi accumsan enim nec tortor consectetur non commodo nisi sollicitudin. Proin sollicitudin. Pellentesque eget orci eros. Fusce ultricies, tellus et pellentesque fringilla, ante massa luctus libero, quis tristique purus urna nec nibh.
-
-Nulla ut porttitor enim. Suspendisse venenatis dui eget eros gravida tempor. Mauris feugiat elit et augue placerat ultrices. Morbi accumsan enim nec tortor consectetur non commodo. Pellentesque condimentum dui. Etiam sagittis purus non tellus tempor volutpat. Donec et dui non massa tristique adipiscing. Quisque vestibulum eros eu. Phasellus imperdiet, tortor vitae congue bibendum, felis enim sagittis lorem, et volutpat ante orci sagittis mi. Morbi rutrum laoreet semper. Morbi accumsan enim nec tortor consectetur non commodo nisi sollicitudin.
-
+A Random Forest predictor was built over the data in order to get some sense of what features were significantly impacting the odds of recidivism. Two loss functions - a Gini loss and an entropy loss - were tested without any conclusion difference. We simulated over a number of trees ranging from $10$ to $100$, as higher values were not bringing any noticeable improvement. The number of features tested ranged from $1$ to all. The figure below gives an idea of the best features.
 
 \begin{center}\vspace{1cm}
-\begin{tabular}{l l l l}
+  \includegraphics[width=.45\linewidth]{number_forest78.png}
+  \includegraphics[width=.45\linewidth]{number_features78.png}
+\captionof{figure}{\color{Green} Number of trees and number of features for the top 5\% test scores.  Simulations were performed for a feature number ranging from $1$ to all, a number of trees ranging from $10$ to $100$, and a Gini loss.}
+\end{center}\vspace{1cm}
+
+\paragraph{}
+The best result were obtained for a test set reduced to 10\% of the initial dataset - in this case, the top test score repeatedly reach 71 \% as we shuffle over and over test and training sets. When we use the NN splitting ratio (7 : 3), we obtain the following results.
+
+\begin{center}\vspace{1cm}
+\begin{tabular}{l l l}
 \toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
+\textbf{Dataset} & \textbf{Response 1} \\
 \midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
+1978 & 67.46 \%  \\
+1980 & 67.95 \%  \\
 \bottomrule
 \end{tabular}
-\captionof{table}{\color{Green} Table caption}
+\captionof{table}{\color{Green} Best performance for the Random Forest predictor. Test set is identical for NN and Random Forest.}
 \end{center}\vspace{1cm}
 
-Vivamus sed nibh ac metus tristique tristique a vitae ante. Sed lobortis mi ut arcu fringilla et adipiscing ligula rutrum. Aenean turpis velit, placerat eget tincidunt nec, ornare in nisl. In placerat.
+
+\section*{Remarks on the dataset}
+
+Given the fact that $13$ of the $16$ feature variable are indicator functions, we may wonder whether the dataset has any antagonist duplicates, that is to say two individuals with the very same features but one is a recidivist and the other is not. Such duplicates would structurally lower the score. To address the concern, we create age groups, time served groups and schooling time groups and look up for duplicates. Depending on how we define these groups, we get a duplicate rate between $1$ \% and $10$ \%.
+
+\paragraph{}
+Random forests classifiers indicate that the number of years spent at school, the age and the duration of the sentence were more important features. This result should be treated cautiously as these three variables happen to be the only 3 variables that are not indicators. Their discriminative power is consequently strengthened.
 
 \begin{center}\vspace{1cm}
-\includegraphics[width=0.8\linewidth]{placeholder}
-\captionof{figure}{\color{Green} Figure caption}
+  \includegraphics[width=\linewidth]{features_weights.png}
+\captionof{figure}{\color{Green} Importance weights for  the top 2 test scores among all classifiers simulated.}
 \end{center}\vspace{1cm}
+
 
 %----------------------------------------------------------------------------------------
 %	CONCLUSIONS
@@ -174,7 +182,7 @@ Vivamus sed nibh ac metus tristique tristique a vitae ante. Sed lobortis mi ut a
 \section*{Conclusions}
 
 \begin{itemize}
-\item We improve upon the existing work done by Palocsay et al. on this data set by achieving a higher validation set accuracy using fewer nodes in the hidden layer.
+\item We improve upon the existing work done by Palocsay et al. \cite{bib1} on this data set by achieving a higher validation set accuracy using fewer nodes in the hidden layer.
 \end{itemize}
 
 \color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
@@ -185,15 +193,15 @@ Vivamus sed nibh ac metus tristique tristique a vitae ante. Sed lobortis mi ut a
 
 \section*{Forthcoming Research}
 
-We are still exploring other ways of optimizing the neural network and more advanced regularization strategies like Dropout.
+We are still exploring other ways of optimizing the neural network and more advanced regularization strategies like Dropout. In parallel, we are looking into a hierarchical mixture of models (HME). We hope that a HME will be less prone to local maxima - a frequent problem in our simulations.
 
  %----------------------------------------------------------------------------------------
 %	REFERENCES
 %----------------------------------------------------------------------------------------
 
-\nocite{*} % Print all references regardless of whether they were cited in the poster or not
-\bibliographystyle{plain} % Plain referencing style
-\bibliography{sample} % Use the example bibliography file sample.bib
+\nocite{*}
+\bibliographystyle{unsrtnat}
+\bibliography{sample}
 
 
 \end{multicols}

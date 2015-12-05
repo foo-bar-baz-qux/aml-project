@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.29)  3 DEC 2015 07:39
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.29)  4 DEC 2015 23:51
 entering extended mode
 **conference_poster_5.tex
 (C:\Users\Estienne\Documents\CS281\aml-project\poster\conference_poster_5.tex
@@ -428,16 +428,8 @@ Package pdftex.def Info: figures/number_features78.png used on input line 144.
 File: figures/features_weights.png Graphic file (type png)
 
 <use figures/features_weights.png>
-Package pdftex.def Info: figures/features_weights.png used on input line 172.
+Package pdftex.def Info: figures/features_weights.png used on input line 173.
 (pdftex.def)             Requested size: 699.05727pt x 371.0236pt.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 186.
-
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <24.88> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 186.
 
 (C:\Users\Estienne\Documents\CS281\aml-project\poster\conference_poster_5.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 13--17
@@ -462,13 +454,13 @@ res/features_weights.png>]
 (C:\Users\Estienne\Documents\CS281\aml-project\poster\conference_poster_5.aux) 
 ) 
 Here is how much of TeX's memory you used:
- 4227 strings out of 493921
- 62408 string characters out of 3147273
- 165258 words of memory out of 3000000
- 7463 multiletter control sequences out of 15000+200000
+ 4210 strings out of 493921
+ 62117 string characters out of 3147273
+ 168258 words of memory out of 3000000
+ 7449 multiletter control sequences out of 15000+200000
  28111 words of font info for 63 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,7n,38p,788b,433s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,7n,38p,1339b,433s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts
@@ -476,7 +468,7 @@ Here is how much of TeX's memory you used:
 rw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_poster_5.pdf (1 page, 203998 bytes).
+Output written on conference_poster_5.pdf (1 page, 205955 bytes).
 PDF statistics:
  45 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

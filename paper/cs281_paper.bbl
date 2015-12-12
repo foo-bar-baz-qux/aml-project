@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -35,6 +35,12 @@ S.~Palocsay, P.~Wang, and R.~Brookshire.
 \newblock Predicting criminal recidivism using neural networks.
 \newblock \emph{Socio-Economic Planning Sciences}, 34\penalty0 (4):\penalty0
   271--284, Decemeber 2000.
+
+\bibitem[Prechelt(1998)]{prechelt1998early}
+L.~Prechelt.
+\newblock Early stopping-but when?
+\newblock In \emph{Neural Networks: Tricks of the trade}, pages 55--69.
+  Springer, 1998.
 
 \bibitem[Schmidt and Witte(1988)]{bib3}
 P.~Schmidt and A.~Witte.

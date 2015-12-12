@@ -54,13 +54,18 @@
 \graphicspath{{figures/}} 
 \usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
 \usepackage{float}
+\usepackage{wrapfig} % Allows wrapping text around tables and figures
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs} % Top and bottom rules for table
 
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 
 \usepackage[square,numbers]{natbib}
 
-\title{\Huge Recidivism of Criminal Offenders \newline \LARGE A machine-learning approach to Justice \newline {}}
+\title{\Huge Recidivism of Criminal Offenders \newline \LARGE A machine-learning approach to justice \newline {}}
 \author{\textbf{Estienne Granet} \\
   Department of Statistics\\
   Harvard University \\
@@ -78,18 +83,77 @@
 \maketitle
 
 \begin{abstract}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+Recidivism of criminal offenders is a difficult topic in criminal justice. If we view the justice system as serving an important rehabilitatory purpose, then recidivism represents indicators for potential improvement in the correctional system. Using a public data-set on two cohorts of inmates released from North Carolina prisons in 1978 and 1980, we build two predictors of whether an individual will offend again in the future. Our first predictor is one-layer feed-forward neural networks. The second predictor is random forest. Results are presented below.
 \end{abstract}
 
 \section*{Introduction}
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+Our goal is to effectively forecast whether an offender will offender again in the future when he or she is released from prison. To achieve this goal, we rely on a survey conducted on prisoners released from North Carolina prisons in 1978 and 1980. The survey contains information on the background of the offenders, including their involvement in drugs or alcohol, level of schooling, nature of the crime resulting in the sample conviction, number of prior incarcerations and recidivism during the followup period following release from the sample
+incarceration. The dataset also contains information on the
+the marital status, the sex, the age and the race of the offenders. In hard numbers, the dataset contains 9,327 profiles for prisoners released in 1978 and 9,549 profiles for prisoners released in 1980. Each entry has 16 variables and most variables are indicators. In order to be consistent with the dataset used in previous work, we process the dataset by removing all defective entries (130 from each dataset) and all entries with missing values (4,709 from the 1978 data and 3,810 from the 1980 data.) \cite{bib1}
 
-\section{Section Title}
+\paragraph{}
+\section{Literature Review}
+Historically, recidivism prediction and analysis has been based primarily on explicative models borrowed from survival analysis such as \cite{bib2} or \cite{bib3}. More recently, there has been some attempts to use neural networks to improve accuracy.
 
-\subsection{Subsection title}
+Schmidt et al. \cite{schmidt1989predicting} used 'split population' survival time models on the same dataset to both predict the probability of recidivism and probability distribution over time of recidivism. They note that these goals are conceptually distinct, and that therefore the explanatory variables are also likely to be different. Their predictions use a slightly different methodology in that they consider accuracy for the offenders who are most likely and least likely to be recidivists based on their model, thresholded by some proportion of the population. While they were able to predict recidivism more accurately than previous statistical models, they note that level of inaccuracy means the predictions are of questionable practical utility and that 'there is still need for better models and better data.'
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+Palocsay et al. \cite{bib1} used the same North Carolina dataset to fit both a feedforward neural network with one hidden layer, and a logistic regression model. They found that the neural network provided superior total accuracy over the logistic regression model for both the 1978, and the 1980 cohorts. In addition, the neural network was also found to have higher accuracy predicting both recidivist and non-recidivist sub-groups. The neural network with the highest validation set accuracy had 39 nodes in the hidden layer. They use a monitoring set to stop training and prevent overfitting. They conclude that neural networks are a viable alternative for modeling recidivism but are highly dependent on network topology and parameters. Their results provide us with a reference for comparison that we use when evaluating our models.
+
+
+\section{Neural Network}
+
+\subsection{Overview}
+
+Neural networks were discovered some time ago, but lately, they have been experiencing a resurgence in usage. There is likely significant complexity in the interactions between the different variables, so simple models like logistic regression are not going to be as capable of modeling them compared to neural networks. Prior work on this data set has considered the use of neural networks and found them to have good predictive power for recidivism compared to traditional modeling techniques like logistic regression models. We seek to harness the improvements in neural networks that have been made over the last few years in an attempt to improve predictive accuracy and reduce model complexity in order to improve generalizability. We find that we can achieve a small, but notable improvement in accuracy on unseen data, as well as a significant reduction in the number of nodes in the hidden layer.
+
+\subsection{Approach}
+
+As this is a plain binary classifications problem, we use a multi-layer perceptron feedforward neural network with a single hidden layer, bias terms, and the logistic function as the activation function ($f$) for both the hidden and output layers. There is a single output neuron ($\hat{y} \in (0, 1)$) used for classification with a $0.5$ threshold.
+
+For some input vector $x$, linear weights $W$, and bias terms $b$:
+
+\[ \hat{y} = f( W_2  f( W_1 x + b_1 ) + b_2 ) \]
+\[ E = - y \ln( \hat{y} ) - (1 - y) \ln ( 1 - \hat{y} ) \]
+
+\begin{center}\vspace{1cm}
+\includegraphics[width=0.6\linewidth]{neural_network}
+\captionof{figure}{Feedforward Neural Network\cite{jordan2004introduction}}
+\end{center}\vspace{1cm}
+
+Using cross-entropy error ($E$), we can apply backpropagation and optimize the weights and bias terms by stochastic gradient descent using $\frac{\partial E}{\partial W}$, and $\frac{\partial E}{\partial b}$. Much has been written on the classical backpropagation equations so we omit them here, but see \cite{lecun-98b} for an overview. We can then adjust the weights by $\eta \frac{\partial E}{\partial W}$ for some $\eta$, and do the same for the bias terms. Stochastic gradient descent is generally seen as preferable for neural networks given the significant speedups and the ability to escape from local minima so we use that here.\cite{lecun-98b} As some of the input variables are binary indicators, and some are large integers (like age in months), we normalize each input variable such that the mean is $0$ and variance is $0$ so the weights for some the larger valued variables do not dominate the indicator variables. In order to counteract overfitting, we use an early-stopping heuristic to stop training the model when the validation set performance does not improve for a certain number of epochs (100 epochs was a good threshold for this particular problem.)
+
+We also attempted variations such as using a $\tanh$ activation function rather than the logistic function, but the validation set results were notably lower despite recommendations to the contrary \cite{lecun-98b}. We suspect it is something about the nature of the data in this specific problem, but there have been some suggestions that binary classification using $\{-1, 1\}$ rather than $\{0, 1\}$ is better for $\tanh$ activation.\cite{lecun-98b}
+
+We attempted to use two hidden layers, but again, validation set results were notably lower likely because even a single hidden layer with a non-linear activation function can approximate significant complexity. Having more than two hidden layers rarely improves performance, and often makes it worse, even though it can theoretically approximate more complex functions. \cite{bengio2007scaling}
+
+As discussed in a later section, the limited information in the dataset is likely making it difficult to get significantly better results; we can hypothesize that recidivism is a very complex topic that is not so easily described by a person's prior background. For example, the types of company a persons keeps, the neighborhood they reside in, and situational factors like success in finding a job, all are potential explanatory variables not captured here.\cite{tillyer2011social} We also note that many of profiles had similar backgrounds, but with ultimately different recidivism outcomes, suggesting there is significant relevant uncaptured information in this dataset.
+
+\begin{center}
+% Left or right alignment is specified in the first bracket, the width of the table is in the second
+\begin{tabular}{l l l l}
+\toprule
+\textbf{Dataset} & \textbf{Palocsay et al.} & \textbf{Our results} & \textbf{Naive baseline} \\
+\midrule
+1978 & 69.20\% (39) & 70.69\% (9) & 64.69\% \\
+1980 & 66.98\% (26) & 68.22\% (5) & 62.24\% \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Validation set performance for NN predictor}
+\end{center} 
+
+After splitting the 1978 dataset and the 1980 dataset into training and validation sets (7:3 ratio) and training the neural network, validation set performance is improved compared to the results from Palocsay et al \cite{bib1}. The results are also achieved with far fewer nodes in the hidden layer, making it faster to train and likely more generalizable. As the figures below reveal, the neural network starts to quickly overfit as the number of nodes in the hidden layer increases.
+
+\begin{center}\vspace{1cm}
+\includegraphics[width=0.9\linewidth]{1978}
+\captionof{figure}{1978 Dataset}
+\end{center}\vspace{1cm}
+
+\begin{center}\vspace{1cm}
+\includegraphics[width=0.9\linewidth]{1980}
+\captionof{figure}{1980 Dataset}
+\end{center}\vspace{1cm}
+
 
 \paragraph{}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.

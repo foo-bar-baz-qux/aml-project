@@ -97,7 +97,7 @@ Past work on the topic include an article on recidivism prediction \cite{bib1}. 
 \color{DarkSlateGray} % DarkSlateGray color for the rest of the content
 
 \section*{Neural Network}
-Neural networks were discovered some time ago, but lately, they have been experiencing a resurgence in usage. There is likely significant complexity in the interactions between the different variables, so simple models like logistic regression are not going to be as capable of modeling them compared to neural networks. Prior work on this data set has considered the use of neural networks and found them to have good predictive power for recidivism compared to traditional modeling techniques like logistic regression models. We seek to harness the improvements in neural networks that have been made over the last few years in an attempt to improve predictive accuracy. We find that we can achieve a small, but notable improvement in accuracy on unseen data.
+Neural networks were discovered some time ago, but lately, they have been experiencing a resurgence in usage. There is likely significant complexity in the interactions between the different variables, so simple models like logistic regression are not going to be as capable of modeling them compared to neural networks. Prior work on this data set has considered the use of neural networks and found them to have good predictive power for recidivism compared to traditional modeling techniques like logistic regression models. We seek to harness the improvements in neural networks that have been made over the last few years in an attempt to improve predictive accuracy. We find that we can achieve a small, but notable improvement in accuracy on unseen data, as well as a significant reduction in the number of nodes in the hidden layer.
 
 As this is a plain binary classifications problem, we use a multi-layer perceptron feedforward neural network with a single hidden layer, bias terms, and the logistic function as the activation function ($f$) for both the hidden and output layers. There is a single output neuron ($\hat{y} \in (0, 1)$) used for classification with a $0.5$ threshold. For some input vector $x$, linear weights $W$, and bias terms $b$:
 
@@ -111,7 +111,7 @@ As this is a plain binary classifications problem, we use a multi-layer perceptr
 
 Using cross-entropy error ($E$), we can apply backpropagation and optimize the weights and bias terms by stochastic gradient descent using $\frac{\partial E}{\partial W}$, and $\frac{\partial E}{\partial b}$. In order to counteract overfitting, we use an early-stopping heuristic to stop training the model when the validation set performance does not improve for a certain number of epochs.
 
-\begin{wraptable}{l}{12cm} % Left or right alignment is specified in the first bracket, the width of the table is in the second
+\begin{table}{c}{12cm} % Left or right alignment is specified in the first bracket, the width of the table is in the second
 \begin{tabular}{l l l}
 \toprule
 \textbf{Dataset} & \textbf{Palocsay et al.} & \textbf{Our results}\\
@@ -121,7 +121,7 @@ Using cross-entropy error ($E$), we can apply backpropagation and optimize the w
 \bottomrule
 \end{tabular}
 \captionof{table}{\color{Green} Validation set performance for NN predictor}
-\end{wraptable}
+\end{table}
 
 After splitting the 1978 dataset and the 1980 dataset into training and validation sets (7:3 ratio) and training the neural network, validation set performance is improved compared to the results from Palocsay et al \cite{bib1}. The results are also achieved with far fewer nodes in the hidden layer, making it faster to train and likely more generalizable. As the figures below reveal, the neural network starts to quickly overfit as the number of nodes in the hidden layer increases.
 

@@ -1,3 +1,50 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: cs281_paper.aux
-The style file: unsrtnat.bst
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: cs281_paper.aux
+The style file: abbrvnat.bst
 Database file #1: cs281_biblio.bib
+Warning--empty journal in bengio2007scaling
+Warning--empty year in bengio2007scaling
+Warning--empty year in bengio2007scaling
+You've used 9 entries,
+            2773 wiz_defined-function locations,
+            652 strings with 5790 characters,
+and the built_in function-call counts, 3874 in all, are:
+= -- 324
+> -- 230
+< -- 5
++ -- 77
+- -- 68
+* -- 318
+:= -- 605
+add.period$ -- 26
+call.type$ -- 9
+change.case$ -- 46
+chr.to.int$ -- 9
+cite$ -- 21
+duplicate$ -- 181
+empty$ -- 330
+format.name$ -- 85
+if$ -- 802
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 10
+newline$ -- 51
+num.names$ -- 38
+pop$ -- 109
+preamble$ -- 1
+purify$ -- 39
+quote$ -- 0
+skip$ -- 130
+stack$ -- 0
+substring$ -- 104
+swap$ -- 13
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 89
+warning$ -- 3
+while$ -- 34
+width$ -- 0
+write$ -- 115
+(There were 3 warnings)

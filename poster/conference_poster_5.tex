@@ -151,7 +151,7 @@ The best result were obtained for a test set reduced to 10\% of the initial data
 \begin{center}\vspace{1cm}
 \begin{tabular}{l l l}
 \toprule
-\textbf{Dataset} & \textbf{Response 1} \\
+\textbf{Dataset} & \textbf{Score on test set} \\
 \midrule
 1978 & 67.46 \%  \\
 1980 & 67.95 \%  \\
@@ -163,9 +163,10 @@ The best result were obtained for a test set reduced to 10\% of the initial data
 
 \section*{Remarks on the dataset}
 
-Given the fact that $13$ of the $16$ feature variable are indicator functions, we may wonder whether the dataset has any antagonist duplicates, that is to say two individuals with the very same features but one is a recidivist and the other is not. Such duplicates would structurally lower the score. To address the concern, we create age groups, time served groups and schooling time groups and look up for duplicates. Depending on how we define these groups, we get a duplicate rate between $1$ \% and $10$ \%.
+\paragraph{Score plateau}
+The score on the test set seems to have an upper bound at $72$\%, independently of the classification method. One explanation of this plateau is the existence of antagonist duplicates in the data set, that is to say two individuals with very similar features but one is a recidivist and the other is not. Such duplicates would structurally lower the score. The existence of duplicates is made easier by the fact that $13$ of the $16$ feature variable are indicator functions. To address the concern, we looked at the data set. All non-indicator variables were partitioned in groups. For example, the age variable (expressed in months) was replaced with a categorical variable that indicates whether the individual belongs to age group $[0,19], [20, 24], [25,29], [30,34], \dots$. Depending on how we define these groups, we get a duplicate rate between $1$ \% and $10$ \%, which is only a partial explanation for the plateau. Another is simply the lack of data. The $11$ indicator variables represent $2^11 = 2048$ combinations. If we add $5$ non-indicator categorical variables, we get a a number of combinations that is significantly bigger than $9,327$, the number of data points for prisoners released in 1978 or even the total number of data points if we merge the $1978$ and $1980$ files.
 
-\paragraph{}
+\paragraph{Explicative variables}
 Random forests classifiers indicate that the number of years spent at school, the age and the duration of the sentence were more important features. This result should be treated cautiously as these three variables happen to be the only 3 variables that are not indicators. Their discriminative power is consequently strengthened.
 
 \begin{center}\vspace{1cm}
@@ -182,9 +183,8 @@ Random forests classifiers indicate that the number of years spent at school, th
 
 \section*{Conclusions}
 
-\begin{itemize}
-\item We improve upon the existing work done by Palocsay et al. \cite{bib1} on this data set by achieving a higher validation set accuracy using fewer nodes in the hidden layer.
-\end{itemize}
+We improve upon the existing work done by Palocsay et al. \cite{bib1} on this data set by achieving a higher validation set accuracy using fewer nodes in the hidden layer. The random forest classifiers indicated that the main factors involved in recidivism are the age, the time served in jail and the level of education.
+
 
 \color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
 
